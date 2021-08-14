@@ -1,0 +1,12 @@
+This web application is purely a backend service.
+To launch this service, run the following, 
+(This assumes python3.8 and above. It should work for python3.6 and above but hasn't been tested. )
+
+1. Goto the web_store directory: cd web_store
+2. Install python-venv
+3. Launch venv: python -m venv venv
+4. source venv/bin/activate
+5. pip install -r requirements.txt
+6. python web_store.py
+
+For launching specific API's refer to API.txt

@@ -1,0 +1,86 @@
+This web application is purely a backend service. The client side requests are simulated using json files. 
+There is no front end available. All request data the client is expected to provide are 
+saved as json files stored in the folder input_data.
+
+The following are the services and the API's available for the client to access. Each request has an example command attached as well.
+
+1. add_customer():
+
+This is a sign up API.
+Route: http://127.0.0.1:5000/signup 
+Request Type: POST
+Data: The sign up details are saved in app/input_data/sign_up.json. Refer to the file provided.
+Command: curl -X POST -d @app/input_data/sign_up.json http://127.0.0.1:5000/signup -H "Content-Type: application/json" 
+
+2. login():
+
+Route:  http://127.0.0.1:5000/login 
+Request Type: POST
+Data: The login details are saved in app/input_data/login.json. Refer to the file provided.
+Command: curl -X POST -d @app/input_data/login.json http://127.0.0.1:5000/login -H "Content-Type: application/json" -L
+
+3. add_vendor()
+
+Route: http://127.0.0.1:5000/register/vendor
+Request Type: POST
+Data: The vendor details are provided in app/input_data/vendor_register.json. Refer to the file provided.
+Command: curl -X POST -d @app/input_data/vendor_register.json http://127.0.0.1:5000/register/vendor -H "Content-Type: application/json" 
+
+4. add_item()
+
+Route: http://127.0.0.1:5000/register/item
+Request Type: POST
+Data: The vendor details are provided in app/input_data/vendor_register.json. Refer to the file provided.
+Usage: Make sure vendor is logged in before running command. Verification is done at this route. To login refer to login above.
+Command: curl -X POST -d @app/input_data/item.json http://127.0.0.1:5000/register/item -H "Content-Type: application/json" 
+
+5. search_item_by_name()
+
+Route: http://127.0.0.1:5000/search/item
+Request Type: GET
+Data: The item-search-request details are provided in app/input_data/search_item.json. Refer to the file provided.
+Usage: Make sure vendor/customer is logged in before running command. Verification is done at this route. To login refer to login above.
+Command: curl -X GET -d @app/input_data/search_item.json http://127.0.0.1:5000/search/item -H "Content-Type: application/json" 
+
+6. place_order()
+
+Route: http://127.0.0.1:5000/order/place
+Request Type: POST
+Data: The details of the order are provided in app/input_data/place_orders.json
+Usage: Make sure customer is logged in before running command. Verification is done at this route. To login refer to login above.
+Command: curl -X POST -d @app/input_data/place_orders.json http://127.0.0.1:5000/order/place -H "Content-Type: application/json" 
+
+7. get_all_orders_by_customer():
+
+Route: http://127.0.0.1:5000/order/get
+Request Type: GET
+Data: The user has to send username info through app/input_data/login.json.
+Usage: Make sure customer is logged in before running command. Verification is done at this route. To login refer to login above.
+Command: curl -X POST -d @app/input_data/get_orders.json http://127.0.0.1:5000/order/get -H "Content-Type: application/json" 
+
+8. get_all_orders():
+
+Route: http://127.0.0.1:5000/order/get_all
+Request Type: GET
+Data: The user has to send username info through app/input_data/login.json.
+Usage: Only a logged in admin can access this API. The command expects login details of the user session. This is done through sending json data. The 
+       behaviour simulates the behaviour of cookies for a session.
+Command: curl -X GET -d @app/input_data/login.json http://127.0.0.1:5000/order/get_all -H "Content-Type: application/json" 
+
+
+9. get_all_vendors():
+
+Route: http://127.0.0.1:5000/vendor
+Request Type: GET
+Data: The user has to send username info through app/input_data/login.json.
+Usage: Only a logged in admin can access this API. The command expects login details of the user session. This is done through sending json data. The 
+       behaviour simulates the behaviour of cookies for a session.
+Command: curl -X GET -d @app/input_data/login.json http://127.0.0.1:5000/vendor -H "Content-Type: application/json" 
+
+
+10. logout():
+Route: http://127.0.0.1:5000/logout
+Request Type: POST
+Data: The user has to send username info through app/input_data/login.json.
+Usage: The username provided is logged out. Once again simulating session cookies.
+Command: curl -X GET -d @app/input_data/login.json http://127.0.0.1:5000/logout -H "Content-Type: application/json" 
