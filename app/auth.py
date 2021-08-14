@@ -146,6 +146,8 @@ def get_all_orders():
                 return f"[order_id, customer_id, items_id, qty, unit_price], {row}"
             else:
                 return f"<h1>Access denied.<>/h1"
+        else:
+            return f"<h1>Please Login.</h1>"
     else:
         return f"<h1>Please enter details.</h1>" 
 
